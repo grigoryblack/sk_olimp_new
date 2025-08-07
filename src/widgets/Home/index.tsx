@@ -1,6 +1,7 @@
 import styles from './Home.module.scss';
 import Button from '../../shared/ui/Button';
 import useMobileDetect from '../../hooks/useMobileDetect.ts';
+import SKOlimp from '../../assets/img/sk_olimp.png';
 
 const Home = () => {
   const isMobile = useMobileDetect();
@@ -8,7 +9,7 @@ const Home = () => {
   return (
     <header className={styles.wrapper}>
       <div className={styles.container}>
-        <img src="" alt="logo" className={styles.logo} />
+        <img src={SKOlimp} alt="logo" className={styles.logo} />
         <div className={styles.text__block}>
           <h1>СК олимп</h1>
           <p>Гарантия вашего спокойствия</p>

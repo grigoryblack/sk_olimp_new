@@ -5,6 +5,7 @@ import styles from './app.module.scss';
 import Home from '../widgets/Home';
 import About from '../widgets/About';
 import Work from '../widgets/Work';
+import Contacts from '../widgets/Contact';
 
 function App() {
   const [currentSection, setCurrentSection] = useState<number>(0);
@@ -15,6 +16,7 @@ function App() {
     { id: 'home', component: <Home /> },
     { id: 'about', component: <About /> },
     { id: 'work', component: <Work /> },
+    { id: 'contacts', component: <Contacts /> },
   ];
 
   const getCurrentSection = () => {

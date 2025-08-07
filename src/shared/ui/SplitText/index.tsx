@@ -5,9 +5,15 @@ interface SplitTextAnimationProps {
   text: string;
   delay?: number;
   threshold?: number;
+  size?: number;
 }
 
-const SplitTextAnimation = ({ text, delay = 0.05, threshold = 0.5 }: SplitTextAnimationProps) => {
+const SplitTextAnimation = ({
+  text,
+  delay = 0.05,
+  threshold = 0.5,
+  size = 3,
+}: SplitTextAnimationProps) => {
   const [letters, setLetters] = useState<string[]>([]);
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,6 +49,7 @@ const SplitTextAnimation = ({ text, delay = 0.05, threshold = 0.5 }: SplitTextAn
           style={{
             animationDelay: isVisible ? `${index * delay}s` : 'none',
             display: letter === ' ' ? 'inline' : 'inline-block',
+            fontSize: `${size}rem`,
           }}
         >
           {letter === ' ' ? '\u00A0' : letter}
