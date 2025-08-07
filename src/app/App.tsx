@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import Menu from '../../../sk_olimp_new/src/shared/ui/Menu';
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import styles from './app.module.scss';
 import Home from '../widgets/Home';
 import About from '../widgets/About';
 import Work from '../widgets/Work';
 import Contacts from '../widgets/Contact';
+import Menu from '../shared/ui/Menu';
 
 function App() {
   const [currentSection, setCurrentSection] = useState<number>(0);
