@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './Carousel.module.scss';
+import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 
 interface CarouselProps {
   items: {
@@ -16,11 +17,13 @@ const Carousel = ({ items }: CarouselProps) => {
   const [touchEnd, setTouchEnd] = useState(0);
   const slidesRef = useRef<HTMLDivElement>(null);
 
-  const goToNext = () => {
+  const goToNext = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     setCurrentIndex((prevIndex) => (prevIndex === items.length - 1 ? 0 : prevIndex + 1));
   };
 
-  const goToPrev = () => {
+  const goToPrev = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? items.length - 1 : prevIndex - 1));
   };
 
@@ -28,7 +31,6 @@ const Carousel = ({ items }: CarouselProps) => {
     setCurrentIndex(index);
   };
 
-  // Добавляем обработчики для свайпа на мобильных устройствах
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -39,15 +41,14 @@ const Carousel = ({ items }: CarouselProps) => {
 
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > 50) {
-      goToNext(); // Свайп влево
+      goToNext();
     }
 
     if (touchStart - touchEnd < -50) {
-      goToPrev(); // Свайп вправо
+      goToPrev();
     }
   };
 
-  // Автоматическое обновление позиции слайдов
   useEffect(() => {
     if (slidesRef.current) {
       slidesRef.current.style.transform = `translateX(-${currentIndex * 100}%)`;
@@ -76,12 +77,8 @@ const Carousel = ({ items }: CarouselProps) => {
         ))}
       </div>
 
-      <button className={`${styles.control} ${styles.prev}`} onClick={goToPrev}>
-        &lt;
-      </button>
-      <button className={`${styles.control} ${styles.next}`} onClick={goToNext}>
-        &gt;
-      </button>
+      <ArrowLeftOutlined onClick={goToPrev} className={`${styles.control} ${styles.prev}`} />
+      <ArrowRightOutlined onClick={goToNext} className={`${styles.control} ${styles.next}`} />
 
       <div className={styles.indicators}>
         {items.map((_, index) => (
