@@ -1,0 +1,56 @@
+@use "@styles/styles" as *;
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100dvh;
+  background-color: $grayscale-0;
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 90%;
+    padding: 3rem 1rem;
+
+    .logo {
+      width: 50%;
+      height: auto;
+      object-fit: contain;
+      background-color: $grayscale-4;
+    }
+
+    .text__block {
+      h1 {
+        @include font-title-mobile;
+        color: $grayscale-3;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      p {
+        @include defaultText;
+        color: $grayscale-3;
+        text-align: center;
+        font-weight: 300;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+
+      button {
+        width: 100%;
+      }
+    }
+  }
+}

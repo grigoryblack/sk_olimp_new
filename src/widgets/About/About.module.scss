@@ -1,0 +1,86 @@
+@use "@styles/styles" as *;
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100dvh;
+  background-color: $grayscale-3;
+
+  .container {
+    width: 100%;
+    max-width: $xlg;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3rem 1rem;
+    box-sizing: border-box;
+    margin: auto;
+
+    p {
+      @include defaultText;
+      color: $grayscale-0;
+      position: relative;
+      margin-top: 2rem;
+      width: 100%;
+
+      &:before {
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: $grayscale-4;
+        bottom: -2px;
+        left: 0;
+      }
+    }
+
+    h3 {
+      @include bitText;
+      margin-top: 2rem;
+      font-weight: 600;
+    }
+
+    .cards {
+      display: flex;
+      width: 100%;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding: 2rem 1rem;
+      margin-left: -1rem;
+      margin-right: -1rem;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 1rem;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      > * {
+        flex: 0 0 auto;
+      }
+
+      .card {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: 250px;
+        height: 250px;
+
+        .icon{
+          font-size: 64px;
+        }
+
+        p {
+          width: 100%;
+          text-align: center;
+          @include bitText;
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}
