@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Button from '../../shared/ui/Button';
 import SplitTextAnimation from '../../shared/ui/SplitText';
 import Mockup from '../../assets/img/mockup.png';
+import ContactsBlock from '../../shared/ui/Contacts';
 
 type FieldType = {
   name?: string;
@@ -30,7 +31,7 @@ const Contacts = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <SplitTextAnimation text={'Напишите нам!'} size={2.6} />
+        <SplitTextAnimation text={'Напишите нам!'} size={2.3} />
 
         <div className={styles.container__inner}>
           <Form
@@ -74,7 +75,7 @@ const Contacts = () => {
               </Button>
             </Form.Item>
 
-            <Contacts />
+            <ContactsBlock />
           </Form>
 
           <img className={styles.mockup} src={Mockup} alt="mockup" />

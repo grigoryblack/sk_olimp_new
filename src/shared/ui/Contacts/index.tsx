@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import styles from './Contacts.module.scss';
+import { message } from 'antd';
 
-const Contacts = () => {
-  const [copied, setCopied] = useState<string | null>(null);
+const ContactsBlock = () => {
+  const [messageApi, contextHolder] = message.useMessage();
 
   const contacts = [
     {
@@ -24,12 +24,15 @@ const Contacts = () => {
 
   const handleCopy = (text: string, type: string) => {
     navigator.clipboard.writeText(text);
-    setCopied(type);
-    setTimeout(() => setCopied(null), 2000);
+    messageApi.open({
+      type: 'success',
+      content: `${type} скопирован!`,
+    });
   };
 
   return (
     <div className={styles.contacts}>
+      {contextHolder}
       <h2 className={styles.title}>Контакты</h2>
 
       <ul className={styles.list}>
@@ -43,12 +46,11 @@ const Contacts = () => {
                   className={styles.link}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleCopy(contact.value, 'phone');
+                    handleCopy(contact.value, 'Телефон');
                   }}
                 >
                   {contact.value}
                 </a>
-                {copied === 'phone' && <span className={styles.copyAlert}>Скопировано!</span>}
               </div>
             )}
 
@@ -60,12 +62,11 @@ const Contacts = () => {
                   className={styles.link}
                   onClick={(e) => {
                     e.preventDefault();
-                    handleCopy(contact.value, 'email');
+                    handleCopy(contact.value, 'E-mail');
                   }}
                 >
                   {contact.value}
                 </a>
-                {copied === 'email' && <span className={styles.copyAlert}>Скопировано!</span>}
               </div>
             )}
 
@@ -77,11 +78,9 @@ const Contacts = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={styles.link}
-                  onClick={() => handleCopy(contact.value, 'address')}
                 >
                   {contact.value}
                 </a>
-                {copied === 'address' && <span className={styles.copyAlert}>Скопировано!</span>}
               </div>
             )}
           </li>
@@ -91,4 +90,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default ContactsBlock;

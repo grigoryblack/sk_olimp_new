@@ -1,15 +1,16 @@
+@use "@styles/styles" as *;
+
 .contacts {
   padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  max-width: 400px;
-  margin: 0 auto;
+  border: 1px solid $grayscale-0;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .title {
   margin-bottom: 20px;
-  text-align: center;
-  color: #333;
+  color: $grayscale-0;
+  @include defaultText;
 }
 
 .list {
@@ -33,25 +34,13 @@
 }
 
 .link {
-  color: #0066cc;
+  color: $grayscale-0;
   text-decoration: none;
   cursor: pointer;
   transition: color 0.2s;
 
   &:hover {
-    color: #004499;
+    color: $grayscale-4;
     text-decoration: underline;
   }
-}
-
-.copyAlert {
-  margin-left: 10px;
-  color: #4caf50;
-  font-size: 0.8em;
-  animation: fadeIn 0.3s;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }

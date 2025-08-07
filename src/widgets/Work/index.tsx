@@ -21,7 +21,7 @@ const Work = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <SplitTextAnimation text={'Наши работы'} />
+        <SplitTextAnimation text={'Наши работы'} size={2.4} />
         <Carousel items={works} />
       </div>
     </div>
