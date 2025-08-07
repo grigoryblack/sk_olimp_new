@@ -11,7 +11,7 @@ function App() {
   const [currentSection, setCurrentSection] = useState<number>(0);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const touchStartY = useRef<number>(0);
-  const wheelTimeout = useRef<ReturnType<typeof setTimeout>>(0);
+  const wheelTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
   const sections = [
     { id: 'home', component: <Home /> },
     { id: 'about', component: <About /> },

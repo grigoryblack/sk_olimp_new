@@ -1,6 +1,11 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import path from 'path'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// ESM-safe __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
@@ -12,18 +17,18 @@ export default defineConfig({
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') },
       { find: '@styles', replacement: path.resolve(__dirname, 'src/shared/styles') },
-      { find: '@ui', replacement: path.resolve(__dirname, 'src/shared/ui') }
-    ]
+      { find: '@ui', replacement: path.resolve(__dirname, 'src/shared/ui') },
+    ],
   },
   css: {
     modules: {
       localsConvention: 'camelCase',
-      generateScopedName: '[name]__[local]__[hash:base64:5]'
+      generateScopedName: '[name]__[local]__[hash:base64:5]',
     },
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "sass:math";`
-      }
-    }
-  }
-})
+        additionalData: `@use "sass:math";`,
+      },
+    },
+  },
+});
