@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const MOBILE_SIZE = 768;
+const MOBILE_SIZE = 769;
 
 /**
  * Хук для определения мобильного устройства по ширине экрана

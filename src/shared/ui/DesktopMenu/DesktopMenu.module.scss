@@ -1,0 +1,69 @@
+@use "@styles/styles" as *;
+
+.wrapper {
+  width: 100%;
+  background-color: $grayscale-0;
+
+  .container {
+    width: 100%;
+    max-width: $xlg;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem;
+
+    .logo {
+      max-width: 50dvw;
+      height: auto;
+      object-fit: cover;
+      margin: auto;
+
+      @media (min-width: $md) {
+        max-width: 300px;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+
+    nav {
+
+      ul {
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        width: fit-content;
+
+        li {
+          list-style: none;
+          width: fit-content;
+          position: relative;
+          color: $grayscale-3;
+
+
+          &:before {
+            content: '';
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: $grayscale-3;
+            position: absolute;
+            transition: width 0.3s ease;
+          }
+
+          &:hover::before {
+            width: 100%;
+          }
+        }
+      }
+
+      @media (min-width: $md) {
+        display: flex;
+      }
+    }
+  }
+}

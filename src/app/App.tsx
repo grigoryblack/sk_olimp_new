@@ -6,12 +6,16 @@ import About from '../widgets/About';
 import Work from '../widgets/Work';
 import Contacts from '../widgets/Contact';
 import Menu from '../shared/ui/Menu';
+import DesktopMenu from '../shared/ui/DesktopMenu';
+import useMobileDetect from '../hooks/useMobileDetect.ts';
 
 function App() {
   const [currentSection, setCurrentSection] = useState<number>(0);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const touchStartY = useRef<number>(0);
   const wheelTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const isMobile = useMobileDetect();
+
   const sections = [
     { id: 'home', component: <Home /> },
     { id: 'about', component: <About /> },
@@ -124,6 +128,8 @@ function App() {
 
   return (
     <div className={styles.scrollContainer}>
+      <DesktopMenu handleAnchorClick={handleAnchorClick} />
+
       <div
         className={styles.sectionsWrapper}
         style={{ transform: `translateY(-${currentSection * 100}vh)` }}
@@ -138,7 +144,6 @@ function App() {
           </div>
         ))}
       </div>
-
       <div className={styles.progressIndicator}>
         {sections.map((section, index) => (
           <a
@@ -149,7 +154,6 @@ function App() {
           />
         ))}
       </div>
-
       {currentSection > 0 && (
         <button
           className={`${styles.navButton} ${styles.up}`}
@@ -160,7 +164,6 @@ function App() {
           <ArrowUpOutlined />
         </button>
       )}
-
       {currentSection < sections.length - 1 && (
         <button
           className={`${styles.navButton} ${styles.down}`}
@@ -172,7 +175,7 @@ function App() {
         </button>
       )}
 
-      <Menu key="menu" handleAnchorClick={handleAnchorClick} />
+      {isMobile && <Menu key="menu" handleAnchorClick={handleAnchorClick} />}
     </div>
   );
 }

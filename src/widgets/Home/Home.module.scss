@@ -14,13 +14,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 90%;
+    height: 60%;
+    margin-top: auto;
+    margin-bottom: auto;
     padding: 3rem 1rem;
 
-    .logo {
-      width: 60%;
-      height: auto;
-      object-fit: contain;
+    @media (min-width: $lg) {
+      width: $xlg
     }
 
     .text__block {
@@ -30,6 +30,14 @@
         margin-bottom: 1rem;
         text-align: center;
         font-weight: 700;
+
+        @media (min-width: $md) {
+          font-size: 5rem;
+        }
+
+        @media (min-width: $lg) {
+          font-size: 10rem;
+        }
       }
 
       p {
@@ -37,6 +45,14 @@
         color: $grayscale-3;
         text-align: center;
         font-weight: 300;
+
+        @media (min-width: $md) {
+          font-size: 1.5rem;
+        }
+
+        @media (min-width: $lg) {
+          font-size: 2rem;
+        }
       }
     }
 
@@ -47,8 +63,23 @@
       gap: 1rem;
       width: 100%;
 
+      @media (min-width: $md) {
+        width: fit-content;
+      }
+
+      @media (min-width: $lg) {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+
       button {
         width: 100%;
+
+        @media (min-width: $lg) {
+          width: fit-content;
+        }
       }
     }
   }
