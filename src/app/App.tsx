@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';
+import React, { useState, useEffect } from 'react';
 import styles from './app.module.scss';
 import Home from '../widgets/Home';
 import About from '../widgets/About';
@@ -11,10 +10,8 @@ import useMobileDetect from '../hooks/useMobileDetect.ts';
 
 function App() {
   const [currentSection, setCurrentSection] = useState<number>(0);
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const touchStartY = useRef<number>(0);
-  const wheelTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
   const isMobile = useMobileDetect();
+  const currentMargin = isMobile ? 50 : 100;
 
   const sections = [
     { id: 'home', component: <Home /> },
@@ -23,127 +20,53 @@ function App() {
     { id: 'contacts', component: <Contacts /> },
   ];
 
-  const getCurrentSection = () => {
-    return sections[currentSection] || sections[0];
-  };
-
-  useEffect(() => {
-    const hash = window.location.hash.replace('#', '');
-    if (hash) {
-      const sectionIndex = sections.findIndex((section) => section.id === hash);
-      if (sectionIndex >= 0) {
-        setCurrentSection(sectionIndex);
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    const section = getCurrentSection();
-    if (section) {
-      history.replaceState(null, '', `#${section.id}`);
-    }
-  }, [currentSection]);
-
-  const handleWheel = (e: WheelEvent) => {
-    e.preventDefault();
-
-    if (isAnimating) return;
-
-    if (e.deltaY > 0) {
-      goToNext();
-    } else {
-      goToPrev();
-    }
-  };
-
-  const handleTouchStart = (e: TouchEvent) => {
-    touchStartY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchEnd = (e: TouchEvent) => {
-    if (isAnimating) return;
-
-    const touchEndY = e.changedTouches[0].clientY;
-    const diff = touchStartY.current - touchEndY;
-
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        goToNext();
-      } else {
-        goToPrev();
-      }
-    }
-  };
-
-  const goToNext = () => {
-    if (currentSection < sections.length - 1) {
-      setIsAnimating(true);
-      setCurrentSection((prev) => prev + 1);
-    }
-  };
-
-  const goToPrev = () => {
-    if (currentSection > 0) {
-      setIsAnimating(true);
-      setCurrentSection((prev) => prev - 1);
-    }
-  };
-
   const handleAnchorClick = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
-    const sectionIndex = sections.findIndex((section) => section.id === id);
-
-    if (sectionIndex === currentSection) return;
-
-    if (sectionIndex >= 0 && !isAnimating) {
-      setIsAnimating(true);
-      setCurrentSection(sectionIndex);
+    const element = document.getElementById(id);
+    if (element) {
+      const offsetTop = element.offsetTop - currentMargin; // Отступ 100px от верха
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
     }
   };
 
   useEffect(() => {
-    if (wheelTimeout.current) clearTimeout(wheelTimeout.current);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const sectionHeights = sections.map((_, index) => {
+        const element = document.getElementById(sections[index].id);
+        return element ? element.offsetTop - currentMargin : 0; // Учитываем отступ 100px
+      });
 
-    wheelTimeout.current = setTimeout(() => {
-      setIsAnimating(false);
-    }, 1000);
-
-    return () => {
-      if (wheelTimeout.current) clearTimeout(wheelTimeout.current);
+      let current = 0;
+      for (let i = 0; i < sectionHeights.length; i++) {
+        if (scrollPosition >= sectionHeights[i]) {
+          current = i;
+        }
+      }
+      setCurrentSection(current);
     };
-  }, [currentSection]);
 
-  useEffect(() => {
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchend', handleTouchEnd);
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchend', handleTouchEnd);
-      if (wheelTimeout.current) clearTimeout(wheelTimeout.current);
-    };
-  }, [currentSection, isAnimating]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [sections]);
 
   return (
     <div className={styles.scrollContainer}>
       <DesktopMenu handleAnchorClick={handleAnchorClick} />
 
-      <div
-        className={styles.sectionsWrapper}
-        style={{ transform: `translateY(-${currentSection * 100}vh)` }}
-      >
-        {sections.map((section, index) => (
-          <div
-            key={index}
-            id={section.id}
-            className={`${styles.section} ${index === currentSection ? styles.active : ''}`}
-          >
-            {section.component}
-          </div>
-        ))}
-      </div>
+      {sections.map((section, index) => (
+        <div
+          key={index}
+          id={section.id}
+          className={styles.section}
+        >
+          {section.component}
+        </div>
+      ))}
+
       <div className={styles.progressIndicator}>
         {sections.map((section, index) => (
           <a
@@ -154,26 +77,6 @@ function App() {
           />
         ))}
       </div>
-      {currentSection > 0 && (
-        <button
-          className={`${styles.navButton} ${styles.up}`}
-          onClick={goToPrev}
-          disabled={isAnimating}
-          aria-label="Previous section"
-        >
-          <ArrowUpOutlined />
-        </button>
-      )}
-      {currentSection < sections.length - 1 && (
-        <button
-          className={`${styles.navButton} ${styles.down}`}
-          onClick={goToNext}
-          disabled={isAnimating}
-          aria-label="Next section"
-        >
-          <ArrowDownOutlined />
-        </button>
-      )}
 
       {isMobile && <Menu key="menu" handleAnchorClick={handleAnchorClick} />}
     </div>

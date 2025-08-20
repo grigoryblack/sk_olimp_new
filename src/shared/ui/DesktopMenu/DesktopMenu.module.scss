@@ -3,16 +3,22 @@
 .wrapper {
   width: 100%;
   background-color: $grayscale-0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 
   .container {
     width: 100%;
     max-width: $xlg;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
     align-items: center;
     margin: 0 auto;
     padding: 1rem;
+    z-index: 3;
 
     .logo {
       max-width: 50dvw;
@@ -28,6 +34,11 @@
     }
 
     nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
 
       ul {
         display: none;
@@ -36,18 +47,24 @@
         justify-content: space-between;
         gap: 1rem;
         width: fit-content;
+        padding: 0;
+        margin: 0;
+
+        @media (min-width: $md) {
+          display: flex;
+        }
 
         li {
           list-style: none;
           width: fit-content;
           position: relative;
           color: $grayscale-3;
-
+          cursor: pointer;
 
           &:before {
             content: '';
             width: 0;
-            height: 2px;
+            height: 1px;
             bottom: -2px;
             left: 0;
             background-color: $grayscale-3;
@@ -55,14 +72,10 @@
             transition: width 0.3s ease;
           }
 
-          &:hover::before {
+          &:hover:before {
             width: 100%;
           }
         }
-      }
-
-      @media (min-width: $md) {
-        display: flex;
       }
     }
   }

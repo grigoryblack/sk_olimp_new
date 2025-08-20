@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100dvh;
   background-color: $grayscale-3;
 
   .container {
@@ -14,9 +13,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 3rem 1rem;
+    padding: 0 1rem;
     box-sizing: border-box;
     margin: auto;
+
+    @media (min-width: $lg) {
+      margin-top: 2rem;
+    }
 
     p {
       @include defaultText;
@@ -24,6 +27,11 @@
       position: relative;
       margin-top: 2rem;
       width: 100%;
+
+
+      @media (min-width: $lg) {
+        font-size: 1.2rem;
+      }
 
       &:before {
         content: "";
@@ -52,6 +60,7 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       gap: 1rem;
+      position: relative;
 
       &::-webkit-scrollbar {
         display: none;
@@ -65,20 +74,36 @@
         padding: 1rem;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-width: 250px;
-        height: 250px;
+        width: 100%;
+        max-width: 330px;
+        height: 300px;
 
-        .icon{
+        .icon {
           font-size: 64px;
+          background-color: $grayscale-1;
+          color: #F4FF77;
+          width: fit-content;
+          padding: 1rem;
+          border-radius: 50%;
         }
 
-        p {
+        .title {
+          width: fit-content;
+          text-align: left;
+          font-size: 1.2rem;
+          font-weight: 600;
+          margin: 1rem 0 0;
+          padding: 0.5rem 1rem;
+          border: 1px solid $grayscale-1;
+          border-radius: 1rem;
+        }
+
+        .description {
           width: 100%;
-          text-align: center;
-          @include bitText;
-          margin-top: 1rem;
+          text-align: left;
+          @include defaultText;
+          font-weight: 400;
+          margin: 1rem 0 0;
         }
       }
     }
