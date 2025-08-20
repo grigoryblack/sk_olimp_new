@@ -3,16 +3,14 @@ import styles from './About.module.scss';
 import SplitTextAnimation from '../../shared/ui/SplitText';
 import TiltedCard from '../../shared/ui/TiltedCard';
 import {
-  CheckOutlined,
   CommentOutlined,
-  ClockCircleOutlined,
   StarOutlined,
   FieldTimeOutlined,
   FileProtectOutlined,
 } from '@ant-design/icons';
 
 const About = () => {
-  const cardsContainerRef = useRef(null);
+  const cardsContainerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
@@ -20,11 +18,13 @@ const About = () => {
 
     if (!container) return;
 
-    const handleWheel = (e) => {
+    const handleWheel = (e: WheelEvent) => {
       if (isHovered) {
         e.preventDefault();
         e.stopPropagation();
+
         container.scrollLeft += e.deltaY;
+
         return false;
       }
     };
