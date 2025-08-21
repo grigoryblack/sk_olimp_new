@@ -1,26 +1,31 @@
+import servicePic1 from '../../assets/img/Services/service_pic1.jpg';
+import servicePic2 from '../../assets/img/Services/service_pic2.jpg';
+import servicePic3 from '../../assets/img/Services/service_pic3.jpg';
+import servicePic4 from '../../assets/img/Services/service_pic4.jpg';
+
 export const SERVICE_CONFIG = [
   {
     title: 'Капитальный ремонт квартиры',
     description:
       'Мы используем только высококачественные материалы, которые гарантированно прослужат вам долго. Наша команда профессионалов обеспечивает надежность и долговечность каждого этапа ремонта.',
-    img: 'src/assets/img/Services/service_pic1.jpg',
+    img: servicePic1,
   },
   {
     title: 'Ремонт под ключ',
     description:
       'Это комплексное решение, которое включает в себя все этапы обновления вашего жилья. Мы берем на себя все заботы по организации и выполнению работ, чтобы вы могли наслаждаться результатом без лишних хлопот. Вы платите фиксированную сумму, которая включает все необходимые материалы и услуги.',
-    img: 'src/assets/img/Services/service_pic2.jpg',
+    img: servicePic2,
   },
   {
     title: 'Комплектация квартиры и коммерческого помещения',
     description:
       'Мы предлагаем профессиональную услугу комплектации, которая включает в себя все необходимые этапы для создания комфортного и функционального пространства.',
-    img: 'src/assets/img/Services/service_pic3.jpg',
+    img: servicePic3,
   },
   {
     title: 'Услуга разработки дизайн-проекта для квартиры и коммерческого помещения',
     description:
       'Мы предлагаем профессиональные услуги по созданию дизайн-проектов, которые помогут вам преобразить пространство и сделать его уникальным',
-    img: 'src/assets/img/Services/service_pic4.jpg',
+    img: servicePic4,
   },
 ];
