@@ -7,7 +7,7 @@ const QABlock = () => {
   return (
     <section className={styles.wrapper}>
       <div className={styles.container}>
-        <SplitTextAnimation text={'Частые вопросы'} size={2.2} />
+        <SplitTextAnimation text={'Частые вопросы'} size={2.2} color="white" />
 
         <FAQ items={allFAQ} />
       </div>

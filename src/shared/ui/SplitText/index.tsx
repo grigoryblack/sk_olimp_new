@@ -6,6 +6,7 @@ interface SplitTextAnimationProps {
   delay?: number;
   threshold?: number;
   size?: number;
+  color?: string;
 }
 
 const SplitTextAnimation = ({
@@ -13,6 +14,7 @@ const SplitTextAnimation = ({
   delay = 0.05,
   threshold = 0.5,
   size = 3,
+  color = 'black',
 }: SplitTextAnimationProps) => {
   const [letters, setLetters] = useState<string[]>([]);
   const [isVisible, setIsVisible] = useState(false);
@@ -50,6 +52,7 @@ const SplitTextAnimation = ({
             animationDelay: isVisible ? `${index * delay}s` : 'none',
             display: letter === ' ' ? 'inline' : 'inline-block',
             fontSize: `${size}rem`,
+            color: color,
           }}
         >
           {letter === ' ' ? '\u00A0' : letter}
