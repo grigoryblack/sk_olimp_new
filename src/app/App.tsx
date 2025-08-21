@@ -61,7 +61,6 @@ function App() {
         <div
           key={index}
           id={section.id}
-          className={styles.section}
         >
           {section.component}
         </div>

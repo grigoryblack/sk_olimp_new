@@ -3,20 +3,11 @@
 .scrollContainer {
   width: 100%;
   padding-top: 50px;
-  overflow-y: auto;
   scroll-behavior: smooth;
 
   @media (min-width: $md) {
     padding-top: 100px;
   }
-}
-
-.section {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 // Индикатор прогресса
