@@ -1,0 +1,103 @@
+@use "@styles/styles" as *;
+
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.card {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.textSection {
+  order: 1;
+}
+
+.imageSection {
+  order: 2;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  max-height: 500px;
+  max-width: 500px;
+  object-fit: cover;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: $grayscale-1;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: $grayscale-4;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 1px;
+    bottom: -2rem;
+    left: 0;
+    background-color: $grayscale-1;
+
+    @media (min-width: $lg) {
+     width: 40%;
+    };
+  }
+}
+
+@media (min-width: $md) {
+  .content {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .textSection {
+    flex: 1;
+    order: unset;
+  }
+
+  .imageSection {
+    flex: 1;
+    order: unset;
+  }
+
+  .card:nth-child(even) .content {
+    flex-direction: row-reverse;
+  }
+
+  .image {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: $lg) {
+  .content {
+    gap: 3rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .description {
+    font-size: 1.1rem;
+  }
+}

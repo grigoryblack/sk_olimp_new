@@ -1,0 +1,16 @@
+@use "@styles/styles" as *;
+
+.wrapper {
+  width: 100%;
+  padding: 2rem 1rem;
+  background-color: $yellow-1;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: $xlg;
+    margin: auto;
+  }
+}

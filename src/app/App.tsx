@@ -7,6 +7,8 @@ import Contacts from '../widgets/Contact';
 import Menu from '../shared/ui/Menu';
 import DesktopMenu from '../shared/ui/DesktopMenu';
 import useMobileDetect from '../hooks/useMobileDetect.ts';
+import Services from '@/widgets/Services';
+import QABlock from '@/widgets/QABlock';
 
 function App() {
   const [currentSection, setCurrentSection] = useState<number>(0);
@@ -16,6 +18,8 @@ function App() {
   const sections = [
     { id: 'home', component: <Home /> },
     { id: 'about', component: <About /> },
+    { id: 'services', component: <Services /> },
+    { id: 'faq', component: <QABlock /> },
     { id: 'work', component: <Work /> },
     { id: 'contacts', component: <Contacts /> },
   ];
@@ -24,10 +28,10 @@ function App() {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
-      const offsetTop = element.offsetTop - currentMargin; // Отступ 100px от верха
+      const offsetTop = element.offsetTop - currentMargin;
       window.scrollTo({
         top: offsetTop,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   };
@@ -58,10 +62,7 @@ function App() {
       <DesktopMenu handleAnchorClick={handleAnchorClick} />
 
       {sections.map((section, index) => (
-        <div
-          key={index}
-          id={section.id}
-        >
+        <div key={index} id={section.id}>
           {section.component}
         </div>
       ))}
