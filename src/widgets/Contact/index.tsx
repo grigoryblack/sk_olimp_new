@@ -10,6 +10,7 @@ import ContactsBlock from '../../shared/ui/Contacts';
 type FieldType = {
   name?: string;
   number?: string;
+  question?: string;
 };
 
 const Contacts = () => {
@@ -32,7 +33,10 @@ const Contacts = () => {
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <SplitTextAnimation text={'Напишите нам!'} size={2.3} />
-
+        <p className={styles.callback__title}>
+          Готовы начать свой проект? <br />
+          Свяжитесь с нами, и мы поможем вам реализовать ваши идеи!
+        </p>
         <div className={styles.container__inner}>
           <Form
             name="callback-form"
@@ -40,6 +44,7 @@ const Contacts = () => {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
             initialValues={{ number: phone }}
+            layout="vertical"
             className={styles.form}
           >
             <Form.Item<FieldType>
@@ -67,6 +72,14 @@ const Contacts = () => {
                 placeholder="89121234562"
                 maxLength={11}
               />
+            </Form.Item>
+
+            <Form.Item<FieldType>
+              label="Ваш вопрос"
+              name="question"
+              rules={[{ required: true, message: 'Пожалуйста, напишите вопрос!' }]}
+            >
+              <textarea placeholder="Текст сообщения..." />
             </Form.Item>
 
             <Form.Item>

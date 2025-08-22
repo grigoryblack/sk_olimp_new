@@ -3,7 +3,7 @@ import styles from './RunningText.module.scss';
 
 interface MarqueeProps {
   texts: string[];
-  speed?: number; // Speed in pixels per second
+  speed?: number;
 }
 
 const Marquee: React.FC<MarqueeProps> = ({ texts, speed = 60 }) => {

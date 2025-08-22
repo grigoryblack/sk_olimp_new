@@ -1,15 +1,24 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './Carousel.module.scss';
-import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import SlideModal from '@ui/SlideModal';
 
 interface CarouselProps {
-  items: {
-    id: number;
-    title: string;
-    description?: string;
-    image: string;
-  }[];
+  items: Project[];
+}
+
+interface Project {
+  id: number;
+  title: string;
+  description?: string;
+  image: string;
+  images: string[];
+  info: Info[];
+}
+
+interface Info {
+  work: string;
+  price: string;
 }
 
 const Carousel = ({ items }: CarouselProps) => {
@@ -17,10 +26,7 @@ const Carousel = ({ items }: CarouselProps) => {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<{
-    title: string;
-    description?: string;
-  } | null>(null);
+  const [selectedItem, setSelectedItem] = useState<Project | null>(null);
   const slidesRef = useRef<HTMLDivElement>(null);
 
   const goToNext = (e?: React.MouseEvent) => {
@@ -54,7 +60,7 @@ const Carousel = ({ items }: CarouselProps) => {
     }
   };
 
-  const handleSlideClick = (item: { title: string; description?: string }) => {
+  const handleSlideClick = (item: Project) => {
     setSelectedItem(item);
     setIsModalVisible(true);
   };
@@ -82,9 +88,9 @@ const Carousel = ({ items }: CarouselProps) => {
           <div
             key={item.id}
             className={styles.slide}
-            style={{ backgroundImage: `url(${item.image})` }}
-            onClick={() => handleSlideClick({ title: item.title, description: item.description })}
+            onClick={() => handleSlideClick(item)}
           >
+            <img className={styles.background} src={item.image} alt={item.title} />
             <div className={styles.content}>
               <h3 className={styles.title}>{item.title}</h3>
               {item.description && <p className={styles.description}>{item.description}</p>}
@@ -93,8 +99,8 @@ const Carousel = ({ items }: CarouselProps) => {
         ))}
       </div>
 
-      <ArrowLeftOutlined onClick={goToPrev} className={`${styles.control} ${styles.prev}`} />
-      <ArrowRightOutlined onClick={goToNext} className={`${styles.control} ${styles.next}`} />
+      <LeftOutlined onClick={goToPrev} className={`${styles.control} ${styles.prev}`} />
+      <RightOutlined onClick={goToNext} className={`${styles.control} ${styles.next}`} />
 
       <div className={styles.indicators}>
         {items.map((_, index) => (
@@ -106,12 +112,7 @@ const Carousel = ({ items }: CarouselProps) => {
         ))}
       </div>
 
-      <SlideModal
-        isVisible={isModalVisible}
-        title={selectedItem?.title}
-        description={selectedItem?.description}
-        onClose={handleModalClose}
-      />
+      <SlideModal isVisible={isModalVisible} project={selectedItem} onClose={handleModalClose} />
     </div>
   );
 };

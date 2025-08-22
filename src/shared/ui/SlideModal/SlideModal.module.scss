@@ -1,0 +1,119 @@
+@use "@styles/styles" as *;
+
+.wrapper {
+  width: 100%;
+
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .subtitle {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      font-weight: 600;
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.1rem;
+
+      &__item {
+        font-size: 1rem;
+      }
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 70dvh;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      touch-action: pan-y;
+
+      .slides {
+        display: flex;
+        height: 100%;
+        transition: transform 0.5s ease-in-out;
+        will-change: transform;
+
+        .background {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          object-fit: cover;
+        }
+      }
+
+      .slide {
+        min-width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .control {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        color: $grayscale-3;
+        font-size: 30px;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: background 0.3s;
+        z-index: 10;
+        display: none;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.5);
+        }
+
+        &.prev {
+          left: 1rem;
+        }
+
+        &.next {
+          right: 1rem;
+        }
+
+        @media (min-width: $md) {
+          font-size: 40px;
+          display: block
+        }
+      }
+
+      .indicators {
+        position: absolute;
+        bottom: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 0.5rem;
+        z-index: 10;
+
+        .indicator {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          border: none;
+          background: rgba(255, 255, 255, 0.5);
+          cursor: pointer;
+          transition: background 0.3s;
+
+          &.active {
+            background: white;
+          }
+        }
+      }
+    }
+  }
+}
