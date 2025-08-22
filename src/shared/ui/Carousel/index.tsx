@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './Carousel.module.scss';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
+import SlideModal from '@ui/SlideModal';
 
 interface CarouselProps {
   items: {
@@ -15,6 +16,11 @@ const Carousel = ({ items }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<{
+    title: string;
+    description?: string;
+  } | null>(null);
   const slidesRef = useRef<HTMLDivElement>(null);
 
   const goToNext = (e?: React.MouseEvent) => {
@@ -43,10 +49,19 @@ const Carousel = ({ items }: CarouselProps) => {
     if (touchStart - touchEnd > 50) {
       goToNext();
     }
-
     if (touchStart - touchEnd < -50) {
       goToPrev();
     }
+  };
+
+  const handleSlideClick = (item: { title: string; description?: string }) => {
+    setSelectedItem(item);
+    setIsModalVisible(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalVisible(false);
+    setSelectedItem(null);
   };
 
   useEffect(() => {
@@ -68,6 +83,7 @@ const Carousel = ({ items }: CarouselProps) => {
             key={item.id}
             className={styles.slide}
             style={{ backgroundImage: `url(${item.image})` }}
+            onClick={() => handleSlideClick({ title: item.title, description: item.description })}
           >
             <div className={styles.content}>
               <h3 className={styles.title}>{item.title}</h3>
@@ -89,6 +105,13 @@ const Carousel = ({ items }: CarouselProps) => {
           />
         ))}
       </div>
+
+      <SlideModal
+        isVisible={isModalVisible}
+        title={selectedItem?.title}
+        description={selectedItem?.description}
+        onClose={handleModalClose}
+      />
     </div>
   );
 };
