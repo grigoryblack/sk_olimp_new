@@ -7,6 +7,19 @@
   width: 100%;
 }
 
+.toggleButton {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: $grayscale-0;
+  cursor: pointer;
+  margin: auto;
+
+  &:hover {
+    color: $grayscale-1;
+  }
+}
+
 .card {
   width: 100%;
 }
@@ -57,7 +70,7 @@
     background-color: $grayscale-1;
 
     @media (min-width: $lg) {
-     width: 40%;
+      width: 40%;
     };
   }
 }

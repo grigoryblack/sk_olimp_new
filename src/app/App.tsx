@@ -9,18 +9,26 @@ import DesktopMenu from '../shared/ui/DesktopMenu';
 import useMobileDetect from '../hooks/useMobileDetect.ts';
 import Services from '@/widgets/Services';
 import QABlock from '@/widgets/QABlock';
+import Marquee from '@ui/RunningText';
 
 function App() {
   const [currentSection, setCurrentSection] = useState<number>(0);
   const isMobile = useMobileDetect();
   const currentMargin = isMobile ? 50 : 100;
+  const announcements = [
+    '| Капитальный ремонт от 10 000 за м²',
+    'Ремонт под ключ от 18 000 за м²',
+    'Разработка дизайн проекта от 1500 за м²',
+  ];
 
   const sections = [
     { id: 'home', component: <Home /> },
     { id: 'about', component: <About /> },
     { id: 'services', component: <Services /> },
+    { id: 'runningText1', component: <Marquee texts={announcements} /> },
     { id: 'faq', component: <QABlock /> },
     { id: 'work', component: <Work /> },
+    { id: 'runningText2', component: <Marquee texts={announcements} /> },
     { id: 'contacts', component: <Contacts /> },
   ];
 

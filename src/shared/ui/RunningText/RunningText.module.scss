@@ -1,0 +1,31 @@
+@use "@styles/styles" as *;
+
+.wrapper {
+  width: 100%;
+  overflow: hidden;
+  background-color: $yellow-1; // Equivalent to Tailwind's bg-gray-100
+}
+
+.marquee {
+  display: flex;
+  white-space: nowrap;
+}
+
+.content {
+  display: flex;
+}
+
+.text {
+  font-family: sans-serif;
+  font-size: 1rem; // Base font size for mobile
+  margin: 1rem 8px; // Equivalent to Tailwind's mx-2
+  font-weight: 600;
+
+  @media (min-width: $md) {
+    font-size: 2rem; // Equivalent to Tailwind's sm:text-xl
+  }
+}
+
+.separator {
+  margin: 0 8px;
+}

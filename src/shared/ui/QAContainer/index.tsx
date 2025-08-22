@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './FAQ.module.scss';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
+import useMobileDetect from '@/hooks/useMobileDetect.ts';
 
 interface FAQItem {
   question: string;
@@ -14,16 +15,25 @@ interface FAQProps {
 
 const FAQ: React.FC<FAQProps> = ({ items, title = '' }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [showAll, setShowAll] = useState(false);
+  const isMobile = useMobileDetect();
 
   const toggleItem = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
+
+  // Определяем, сколько вопросов показывать
+  const visibleItems = isMobile && !showAll ? items.slice(0, 6) : items;
+
   return (
     <div className={styles.faqContainer}>
       {title && <p>{title}</p>}
       <div className={styles.content}>
-        {items.map((item, index) => (
+        {visibleItems.map((item, index) => (
           <div key={index} className={styles.faqItem}>
             <button
               className={styles.question}
@@ -42,6 +52,12 @@ const FAQ: React.FC<FAQProps> = ({ items, title = '' }) => {
           </div>
         ))}
       </div>
+
+      {isMobile && items.length > 6 && (
+        <button className={styles.toggleButton} onClick={toggleShowAll}>
+          {showAll ? 'Скрыть' : 'Показать все'}
+        </button>
+      )}
     </div>
   );
 };
