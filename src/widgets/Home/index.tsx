@@ -1,7 +1,7 @@
 import styles from './Home.module.scss';
 import Button from '../../shared/ui/Button';
 import useMobileDetect from '../../hooks/useMobileDetect.ts';
-import HomePromo from "../../assets/img/HomePage/homepage.png";
+import HomePromo from '../../assets/img/HomePage/preview.png';
 
 const Home = () => {
   const isMobile = useMobileDetect();
@@ -12,7 +12,7 @@ const Home = () => {
 
       <div className={styles.container}>
         <div className={styles.text__block}>
-          <h1>СК олимп</h1>
+          <h1>СК «ОЛИМП»</h1>
           <p>Гарантия вашего спокойствия</p>
         </div>
 

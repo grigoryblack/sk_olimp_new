@@ -11,11 +11,17 @@
   .background {
     position: absolute;
     z-index: -1;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100dvw;
     height: 100dvh;
     object-fit: cover;
+    
+    @media (min-width: $lg) {
+      top: 70%;
+      transform: translate(-50%, -70%);
+    }
   }
 
   .container {
