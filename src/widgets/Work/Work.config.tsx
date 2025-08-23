@@ -195,7 +195,7 @@ export const WORKS = [
   },
   {
     id: 5,
-    title: 'Санузел №1 м²',
+    title: 'Санузел №1',
     description: 'Проект реализован в течении двух недель',
     image: Toilet1_1,
     images: [Toilet1_1, Toilet1_2, Toilet1_3, Toilet1_4, Toilet1_5, Toilet1_6, Toilet1_7],
@@ -216,7 +216,7 @@ export const WORKS = [
   },
   {
     id: 6,
-    title: 'Санузел №2 м²',
+    title: 'Санузел №2',
     description: 'Проект реализован в течении трех недель',
     image: Toilet2_3,
     images: [
@@ -246,7 +246,7 @@ export const WORKS = [
   },
   {
     id: 7,
-    title: 'Санузел №3 м²',
+    title: 'Санузел №3',
     description: 'Проект реализован в течении 10 дней',
     image: Toilet3_3,
     images: [Toilet3_1, Toilet3_2, Toilet3_3, Toilet3_4, Toilet3_5, Toilet3_6],

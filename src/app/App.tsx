@@ -21,17 +21,6 @@ function App() {
     'Разработка дизайн проекта от 1500 ₽ за м²',
   ];
 
-  const sections = [
-    { id: 'home', component: <Home /> },
-    { id: 'about', component: <About /> },
-    { id: 'services', component: <Services /> },
-    { id: 'runningText1', component: <Marquee texts={announcements} /> },
-    { id: 'faq', component: <QABlock /> },
-    { id: 'work', component: <Work /> },
-    { id: 'runningText2', component: <Marquee texts={announcements} /> },
-    { id: 'contacts', component: <Contacts /> },
-  ];
-
   const handleAnchorClick = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -43,6 +32,18 @@ function App() {
       });
     }
   };
+
+  const sections = [
+    { id: 'home', component: <Home handleAnchorClick={handleAnchorClick} /> },
+    { id: 'runningText1', component: <Marquee texts={announcements} /> },
+    { id: 'about', component: <About /> },
+    { id: 'services', component: <Services /> },
+    { id: 'runningText2', component: <Marquee texts={announcements} /> },
+    { id: 'faq', component: <QABlock /> },
+    { id: 'work', component: <Work /> },
+    { id: 'runningText3', component: <Marquee texts={announcements} /> },
+    { id: 'contacts', component: <Contacts /> },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {

@@ -113,6 +113,19 @@
           }
         }
 
+        .link {
+          color: $grayscale-1;
+          padding: 0.3rem;
+          border-radius: 5px;
+          text-decoration: underline;
+
+          &:hover {
+            color: $yellow-1;
+            background-color: $grayscale-1;
+            text-decoration: none;
+          }
+        }
+
         button {
           margin-top: 1rem;
           width: 100%;
@@ -136,6 +149,23 @@
     a {
       color: $yellow-1;
       margin-left: 0.25rem;
+    }
+  }
+}
+
+.agreementText {
+  line-height: 1.6;
+
+  p {
+    margin-bottom: 16px;
+  }
+
+  ul {
+    margin: 16px 0;
+    padding-left: 24px;
+
+    li {
+      margin-bottom: 8px;
     }
   }
 }
