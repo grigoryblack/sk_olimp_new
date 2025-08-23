@@ -12,8 +12,8 @@ const ContactsBlock = () => {
     },
     {
       type: 'email',
-      value: 'example@domain.com',
-      href: 'mailto:example@domain.com',
+      value: 'skolimp96@yandex.ru',
+      href: 'mailto:skolimp96@yandex.ru',
     },
     {
       type: 'address',
