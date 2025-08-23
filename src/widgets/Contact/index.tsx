@@ -186,7 +186,7 @@ const Contacts = () => {
             </Form.Item>
 
             <Form.Item>
-              <Button variant="primary" type="submit" disabled={isLoading}>
+              <Button variant="primary" disabled={isLoading}>
                 {isLoading ? 'Отправка...' : 'Получить консультацию'}
               </Button>
             </Form.Item>
