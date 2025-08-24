@@ -17,7 +17,7 @@
     width: 100dvw;
     height: 100dvh;
     object-fit: cover;
-    
+
     @media (min-width: $lg) {
       top: 70%;
       transform: translate(-50%, -70%);
@@ -49,6 +49,21 @@
         text-align: center;
         font-weight: 400;
 
+        span {
+          padding: 0.8rem;
+          border-radius: 1rem;
+          background-color: rgba($yellow-1, 0.7);
+          border: 1px solid $yellow-1;
+          color: $grayscale-0;
+          font-weight: 600;
+          margin: 0;
+          font-size: 1.4rem;
+
+          @media (min-width: $lg) {
+            font-size: 3rem;
+          }
+        }
+
         @media (min-width: $md) {
           font-size: 4rem;
         }
@@ -64,8 +79,9 @@
         text-align: center;
         font-weight: 400;
         position: relative;
+        margin-top: 3rem;
 
-        &::before{
+        &::before {
           content: '';
           width: 10%;
           height: 1px;
@@ -104,7 +120,7 @@
       @media (min-width: $lg) {
         flex-direction: row;
         justify-content: center;
-        gap: 1rem;
+        margin-top: 7rem;
       }
 
 

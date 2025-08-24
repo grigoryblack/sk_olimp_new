@@ -17,9 +17,12 @@ const Home = ({ handleAnchorClick }: HomeProps) => {
       <div className={styles.container}>
         <div className={styles.text__block}>
           <h1>
-            Сделаем&nbsp;ремонт Вашей&nbsp;мечты <br/> от <strong>18 000 ₽/м²</strong>
+            Сделаем&nbsp;ремонт Вашей&nbsp;мечты <br /> от <strong>18 000 ₽/м²</strong><br />
+            <span>+ комплектация в подарок!</span>
           </h1>
-          <p><strong>СК «ОЛИМП»</strong> — гарантия&nbsp;вашего&nbsp;спокойствия</p>
+          <p>
+            <strong>СК «ОЛИМП»</strong> — гарантия&nbsp;вашего&nbsp;спокойствия
+          </p>
         </div>
 
         <div className={styles.buttons}>

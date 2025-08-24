@@ -11,6 +11,7 @@ interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   id?: string;
   children: React.ReactNode;
+  className?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -20,12 +21,14 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   id,
   children,
+  className,
 }) => {
   const buttonClasses = [
     styles.button,
     styles[`size-${size}`],
     styles[`variant-${variant}`],
     disabled ? styles.disabled : '',
+    className
   ].join(' ');
 
   return (

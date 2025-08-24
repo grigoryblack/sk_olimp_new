@@ -1,15 +1,8 @@
-import servicePic1 from '../../assets/img/Services/service_pic1.jpg';
 import servicePic2 from '../../assets/img/Services/service_pic2.jpg';
 import servicePic3 from '../../assets/img/Services/service_pic3.jpg';
 import servicePic4 from '../../assets/img/Services/service_pic4.jpg';
 
 export const SERVICE_CONFIG = [
-  {
-    title: 'Капитальный ремонт квартиры',
-    description:
-      'Мы\u00A0используем только высококачественные материалы, которые гарантированно прослужат вам\u00A0долго. Наша команда профессионалов обеспечивает надежность и\u00A0долговечность каждого этапа ремонта.',
-    img: servicePic1,
-  },
   {
     title: 'Ремонт под ключ',
     description:
