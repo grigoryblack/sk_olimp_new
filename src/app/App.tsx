@@ -10,7 +10,6 @@ import useMobileDetect from '../hooks/useMobileDetect.ts';
 import Services from '@/widgets/Services';
 import QABlock from '@/widgets/QABlock';
 import Marquee from '@ui/RunningText';
-import CapitalRepair from '@/widgets/CapitalRepair';
 
 function App() {
   const [currentSection, setCurrentSection] = useState<number>(0);
@@ -39,7 +38,6 @@ function App() {
     { id: 'runningText1', component: <Marquee texts={announcements} /> },
     { id: 'about', component: <About /> },
     { id: 'services', component: <Services /> },
-    { id: 'capital', component: <CapitalRepair handleAnchorClick={handleAnchorClick} /> },
     { id: 'runningText2', component: <Marquee texts={announcements} /> },
     { id: 'faq', component: <QABlock /> },
     { id: 'work', component: <Work /> },
