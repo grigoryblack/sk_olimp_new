@@ -1,12 +1,14 @@
 import styles from './DesktopMenu.module.scss';
 import SKOlimp from '../../../assets/img/sk_olimp.png';
 import useMobileDetect from '../../../hooks/useMobileDetect.ts';
+import React from 'react';
 
 interface MenuProps {
   handleAnchorClick: (e: React.MouseEvent, id: string) => void;
+  scrollProgress: number;
 }
 
-const DesktopMenu = ({ handleAnchorClick }: MenuProps) => {
+const DesktopMenu = ({ handleAnchorClick, scrollProgress }: MenuProps) => {
   const isMobile = useMobileDetect();
 
   const menuItems = [
@@ -41,6 +43,10 @@ const DesktopMenu = ({ handleAnchorClick }: MenuProps) => {
             </ul>
           </nav>
         )}
+      </div>
+
+      <div className={styles.progressBarContainer}>
+        <div className={styles.progressBar} style={{ width: `${scrollProgress}%` }} />
       </div>
     </div>
   );

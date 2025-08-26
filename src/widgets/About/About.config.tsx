@@ -2,12 +2,18 @@ import {
   CommentOutlined,
   FieldTimeOutlined,
   FileProtectOutlined,
+  ShopOutlined,
   StarOutlined,
 } from '@ant-design/icons';
 
 import styles from './About.module.scss';
 
 export const cardsData = [
+  {
+    icon: <ShopOutlined className={styles.icon} />,
+    description: 'Профессиональные решения для\u00A0бизнеса',
+    text: 'Коммерческий ремонт',
+  },
   {
     icon: <StarOutlined className={styles.icon} />,
     description: 'Мы используем только проверенные материалы и\u00A0современные технологии',

@@ -75,7 +75,7 @@ import Toilet3_6 from '../../assets/img/Projects/Toilet3/photo_2025-08-19_17-36-
 export const WORKS = [
   {
     id: 1,
-    title: 'Квартира 30 м²',
+    title: 'Квартира 30 м² на ул. академика Ландау',
     description: 'Проект реализован в течении 3.5 месяцев',
     image: Flat30_3,
     images: [Flat30_1, Flat30_2, Flat30_3, Flat30_4, Flat30_5, Flat30_6],
@@ -96,7 +96,7 @@ export const WORKS = [
   },
   {
     id: 2,
-    title: 'Квартира 33 м²',
+    title: 'Квартира 33 м² в ЖК «Свобода Резидентс»',
     description: 'Проект реализован в течении 3 месяцев',
     image: Flat33_11,
     images: [
@@ -129,7 +129,7 @@ export const WORKS = [
   },
   {
     id: 3,
-    title: 'Квартира 42 м²',
+    title: 'Квартира 42 м² в ЖК «Каменные палатки»',
     description: 'Проект реализован в течении 3 месяцев',
     image: Flat42_4,
     images: [
@@ -161,7 +161,7 @@ export const WORKS = [
   },
   {
     id: 4,
-    title: 'Квартира 94 м²',
+    title: 'Квартира 94 м² в ЖК «на Некрасова»',
     description: 'Проект реализован в течении 6 месяцев',
     image: Project94_2,
     images: [
@@ -195,7 +195,7 @@ export const WORKS = [
   },
   {
     id: 5,
-    title: 'Санузел №1',
+    title: 'Санузел в ЖК «Изумрудный Бор»',
     description: 'Проект реализован в течении двух недель',
     image: Toilet1_1,
     images: [Toilet1_1, Toilet1_2, Toilet1_3, Toilet1_4, Toilet1_5, Toilet1_6, Toilet1_7],
@@ -216,7 +216,7 @@ export const WORKS = [
   },
   {
     id: 6,
-    title: 'Санузел №2',
+    title: 'Санузел в ЖК «Парк Столиц»',
     description: 'Проект реализован в течении трех недель',
     image: Toilet2_3,
     images: [
@@ -246,7 +246,7 @@ export const WORKS = [
   },
   {
     id: 7,
-    title: 'Санузел №3',
+    title: 'Санузел в ЖК «Астон Событие»',
     description: 'Проект реализован в течении 10 дней',
     image: Toilet3_3,
     images: [Toilet3_1, Toilet3_2, Toilet3_3, Toilet3_4, Toilet3_5, Toilet3_6],

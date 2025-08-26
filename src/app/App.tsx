@@ -12,13 +12,13 @@ import QABlock from '@/widgets/QABlock';
 import Marquee from '@ui/RunningText';
 
 function App() {
-  const [currentSection, setCurrentSection] = useState<number>(0);
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
   const isMobile = useMobileDetect();
   const currentMargin = isMobile ? 50 : 100;
   const announcements = [
-    '| Капитальный ремонт от 10 000 ₽ за м²',
-    'Ремонт под ключ от 18 000 ₽ за м²',
+    '| Ремонт под ключ от 18 000 ₽ за м²',
     'Разработка дизайн проекта от 1500 ₽ за м²',
+    'Ремонт коммерческих помещений',
   ];
 
   const handleAnchorClick = (e: React.MouseEvent, id: string) => {
@@ -48,18 +48,9 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const sectionHeights = sections.map((_, index) => {
-        const element = document.getElementById(sections[index].id);
-        return element ? element.offsetTop - currentMargin : 0; // Учитываем отступ 100px
-      });
-
-      let current = 0;
-      for (let i = 0; i < sectionHeights.length; i++) {
-        if (scrollPosition >= sectionHeights[i]) {
-          current = i;
-        }
-      }
-      setCurrentSection(current);
+      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollPosition / documentHeight) * 100;
+      setScrollProgress(scrollPercent);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -68,24 +59,13 @@ function App() {
 
   return (
     <div className={styles.scrollContainer}>
-      <DesktopMenu handleAnchorClick={handleAnchorClick} />
+      <DesktopMenu handleAnchorClick={handleAnchorClick} scrollProgress={scrollProgress} />
 
       {sections.map((section, index) => (
         <div key={index} id={section.id}>
           {section.component}
         </div>
       ))}
-
-      <div className={styles.progressIndicator}>
-        {sections.map((section, index) => (
-          <a
-            key={index}
-            href={`#${section.id}`}
-            onClick={(e) => handleAnchorClick(e, section.id)}
-            className={`${styles.indicatorDot} ${index === currentSection ? styles.active : ''}`}
-          />
-        ))}
-      </div>
 
       {isMobile && <Menu key="menu" handleAnchorClick={handleAnchorClick} />}
     </div>
