@@ -18,6 +18,12 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    emptyOutDir: true,
+  },
+  base: '/',
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, 'src') },

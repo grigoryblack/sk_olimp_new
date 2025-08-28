@@ -1,21 +1,25 @@
 FROM node:20-alpine
 
-WORKDIR /app
+# Create app directory
+WORKDIR /usr/src/app
 
-# Copy server files first
-COPY server/package*.json ./
+# Copy package files
+COPY package*.json ./
+COPY server/package*.json ./server/
 
-# Install production dependencies only
-RUN npm install --only=production
+# Install server dependencies
+WORKDIR /usr/src/app/server
+RUN npm install
 
-# Copy the rest of the server files
-COPY server/ ./
+# Copy server source
+COPY server/ .
 
-# Create .env file from environment variables
-RUN touch .env
-RUN echo "YANDEX_EMAIL=$YANDEX_EMAIL" >> .env
-RUN echo "YANDEX_APP_PASSWORD=$YANDEX_APP_PASSWORD" >> .env
-RUN echo "RECIPIENT_EMAIL=$RECIPIENT_EMAIL" >> .env
+# Set environment variables
+ENV NODE_ENV=production
+ENV PORT=3001
 
+# Expose the application port
 EXPOSE 3001
+
+# Start the application
 CMD ["node", "index.js"]
