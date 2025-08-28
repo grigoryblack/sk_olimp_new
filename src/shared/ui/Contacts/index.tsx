@@ -7,18 +7,13 @@ const ContactsBlock = () => {
   const contacts = [
     {
       type: 'phone',
-      value: '+7 (123) 456-78-90',
-      href: 'tel:+71234567890',
+      value: '+7 (932) 112 28 58',
+      href: 'tel:+79321122858',
     },
     {
       type: 'email',
       value: 'skolimp96@yandex.ru',
       href: 'mailto:skolimp96@yandex.ru',
-    },
-    {
-      type: 'address',
-      value: 'г. Москва, ул. Примерная, д. 10',
-      href: 'https://yandex.ru/maps/?text=г. Москва, ул. Примерная, д. 10',
     },
   ];
 

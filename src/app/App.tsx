@@ -18,7 +18,7 @@ function App() {
   const announcements = [
     '| Ремонт под ключ от 18 000 ₽ за м²',
     'Разработка дизайн проекта от 1500 ₽ за м²',
-    'Ремонт коммерческих помещений',
+    'Ремонт коммерческих помещений от 10 000 ₽ за м²',
   ];
 
   const handleAnchorClick = (e: React.MouseEvent, id: string) => {
