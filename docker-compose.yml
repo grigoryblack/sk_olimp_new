@@ -1,0 +1,26 @@
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - YANDEX_EMAIL=${YANDEX_EMAIL}
+      - YANDEX_APP_PASSWORD=${YANDEX_APP_PASSWORD}
+      - RECIPIENT_EMAIL=${RECIPIENT_EMAIL}
+      - NODE_ENV=production
+      - PORT=3001
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    restart: unless-stopped
