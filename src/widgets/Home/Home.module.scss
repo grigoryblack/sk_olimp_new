@@ -34,7 +34,7 @@
     height: 70%;
     margin-top: auto;
     margin-bottom: auto;
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
 
     @media (min-width: $lg) and (max-height: 1000px) {
       width: $xlg;
@@ -74,7 +74,7 @@
         text-align: center;
         font-weight: 400;
         position: relative;
-        margin-top: 3rem;
+        margin: 3rem 0;
 
         &::before {
           content: '';
