@@ -1,5 +1,6 @@
 import styles from './Contacts.module.scss';
 import { message } from 'antd';
+import { WhatsAppOutlined } from '@ant-design/icons';
 
 const ContactsBlock = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -14,6 +15,11 @@ const ContactsBlock = () => {
       type: 'email',
       value: 'skolimp96@yandex.ru',
       href: 'mailto:skolimp96@yandex.ru',
+    },
+    {
+      type: 'whatsapp',
+      value: 'WhatsApp',
+      href: 'whatsapp://send?phone=79126207939',
     },
   ];
 
@@ -65,9 +71,11 @@ const ContactsBlock = () => {
               </div>
             )}
 
-            {contact.type === 'address' && (
+            {contact.type === 'whatsapp' && (
               <div className={styles.contact}>
-                <span className={styles.icon}>📍</span>
+                <span className={styles.icon}>
+                  <WhatsAppOutlined />
+                </span>
                 <a
                   href={contact.href}
                   target="_blank"
